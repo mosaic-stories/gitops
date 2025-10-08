@@ -1,0 +1,7 @@
+global:
+  registry: 033691785857.dkr.ecr.us-east-1.amazonaws.com
+  domain: mosaiclife.me
+web:
+  enabled: true
+coreApi:
+  enabled: true

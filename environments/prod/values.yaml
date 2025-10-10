@@ -2,7 +2,7 @@
 # Updated automatically by GitHub Actions on merge to main
 
 global:
-  imageTag: "cdf12dc" # Will be set to SHA (e.g., "abc1234") by CI/CD
+  imageTag: "c63eb0c" # Will be set to SHA (e.g., "abc1234") by CI/CD
   environment: prod
 web:
   replicaCount: 2

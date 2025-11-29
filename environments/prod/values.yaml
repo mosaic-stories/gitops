@@ -1,5 +1,5 @@
 global:
-  imageTag: 2282d69
+  imageTag: d8a5780
   environment: prod
 web:
   replicaCount: 2

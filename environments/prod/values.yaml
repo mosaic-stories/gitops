@@ -1,5 +1,5 @@
 global:
-  imageTag: 5dc6994
+  imageTag: ececa2b
   environment: prod
 web:
   replicaCount: 2

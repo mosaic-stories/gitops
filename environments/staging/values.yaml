@@ -5,6 +5,7 @@ global:
   imageTag: "73bdf1d"
   domain: "stage.mosaiclife.me"
   environment: staging
+
 web:
   replicaCount: 1
   autoscaling:
@@ -21,6 +22,7 @@ web:
         paths:
           - path: /
             pathType: Prefix
+
 coreApi:
   replicaCount: 1
   autoscaling:
@@ -40,6 +42,9 @@ coreApi:
         paths:
           - path: /
             pathType: Prefix
+  
+  # Full environment configuration for staging
+  # NOTE: Helm does not deep-merge arrays, so we must include the complete env array here
   env:
     - name: PORT
       value: "8080"
@@ -49,6 +54,8 @@ coreApi:
       value: "info"
     - name: AWS_REGION
       value: "us-east-1"
+    
+    # Google OAuth Configuration
     - name: GOOGLE_CLIENT_ID
       valueFrom:
         secretKeyRef:
@@ -59,10 +66,20 @@ coreApi:
         secretKeyRef:
           name: google-oauth
           key: client-secret
+    
+    # Application URLs
     - name: APP_URL
       value: "https://stage.mosaiclife.me"
     - name: API_URL
       value: "https://stage-api.mosaiclife.me"
+    
+    # SES Email Configuration
+    - name: SES_FROM_EMAIL
+      value: "noreply@mosaiclife.me"
+    - name: SES_REGION
+      value: "us-east-1"
+    
+    # Session Configuration
     - name: SESSION_SECRET_KEY
       valueFrom:
         secretKeyRef:
@@ -70,23 +87,22 @@ coreApi:
           key: secret-key
     - name: SESSION_COOKIE_DOMAIN
       value: ".mosaiclife.me"
+    
+    # AWS S3 Configuration
     - name: STORAGE_BACKEND
       value: "s3"
     - name: S3_MEDIA_BUCKET
       value: "mosaic-staging-media-033691785857"
     - name: S3_BACKUP_BUCKET
       value: "mosaic-staging-backups-033691785857"
+    
+    # Database URL from External Secrets
     - name: DB_URL
       valueFrom:
         secretKeyRef:
           name: database-credentials
           key: DB_URL
-  # SES Email Configuration for invitations
-  env:
-    - name: SES_FROM_EMAIL
-      value: "noreply@mosaiclife.me"
-    - name: SES_REGION
-      value: "us-east-1"
+
 externalSecrets:
   database:
     secretKey: "mosaic/staging/rds/credentials"

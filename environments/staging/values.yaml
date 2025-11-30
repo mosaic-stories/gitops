@@ -2,14 +2,12 @@
 # Updated automatically by GitHub Actions on merge to develop
 
 global:
-  imageTag: "" # Will be set to SHA (e.g., "abc1234") by CI/CD
+  imageTag: "75acfe5" # Will be set to SHA (e.g., "abc1234") by CI/CD
   environment: staging
-
 web:
   replicaCount: 1
   autoscaling:
     enabled: false
-
 coreApi:
   replicaCount: 1
   autoscaling:

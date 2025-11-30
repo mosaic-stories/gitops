@@ -13,6 +13,12 @@ coreApi:
     enabled: true
     minReplicas: 3
     maxReplicas: 20
+  # SES Email Configuration for invitations
+  env:
+    - name: SES_FROM_EMAIL
+      value: "noreply@mosaiclife.me"
+    - name: SES_REGION
+      value: "us-east-1"
 externalSecrets:
   session:
     secretKey: "mosaic/prod/session/secret-key"

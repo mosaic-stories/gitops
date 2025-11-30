@@ -81,6 +81,12 @@ coreApi:
         secretKeyRef:
           name: database-credentials
           key: DB_URL
+  # SES Email Configuration for invitations
+  env:
+    - name: SES_FROM_EMAIL
+      value: "noreply@mosaiclife.me"
+    - name: SES_REGION
+      value: "us-east-1"
 externalSecrets:
   database:
     secretKey: "mosaic/staging/rds/credentials"

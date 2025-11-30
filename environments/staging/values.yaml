@@ -2,10 +2,9 @@
 # Updated automatically by GitHub Actions on merge to develop
 
 global:
-  imageTag: "develop"
+  imageTag: "73bdf1d"
   domain: "stage.mosaiclife.me"
   environment: staging
-
 web:
   replicaCount: 1
   autoscaling:
@@ -22,7 +21,6 @@ web:
         paths:
           - path: /
             pathType: Prefix
-
 coreApi:
   replicaCount: 1
   autoscaling:
@@ -83,7 +81,6 @@ coreApi:
         secretKeyRef:
           name: database-credentials
           key: DB_URL
-
 externalSecrets:
   database:
     secretKey: "mosaic/staging/rds/credentials"

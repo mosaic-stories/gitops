@@ -2,13 +2,88 @@
 # Updated automatically by GitHub Actions on merge to develop
 
 global:
-  imageTag: "75acfe5" # Will be set to SHA (e.g., "abc1234") by CI/CD
+  imageTag: "develop"
+  domain: "stage.mosaiclife.me"
   environment: staging
+
 web:
   replicaCount: 1
   autoscaling:
     enabled: false
+  podDisruptionBudget:
+    enabled: false
+  ingress:
+    annotations:
+      alb.ingress.kubernetes.io/tags: "Environment=staging,Project=MosaicLife,Component=web"
+      external-dns.alpha.kubernetes.io/hostname: "stage.mosaiclife.me"
+    hosts:
+      - host: stage.mosaiclife.me
+        paths:
+          - path: /
+            pathType: Prefix
+
 coreApi:
   replicaCount: 1
   autoscaling:
     enabled: false
+  podDisruptionBudget:
+    enabled: false
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::033691785857:role/mosaic-staging-core-api-role
+  ingress:
+    annotations:
+      alb.ingress.kubernetes.io/tags: "Environment=staging,Project=MosaicLife,Component=backend"
+      external-dns.alpha.kubernetes.io/hostname: "stage-api.mosaiclife.me"
+    hosts:
+      - host: stage-api.mosaiclife.me
+        paths:
+          - path: /
+            pathType: Prefix
+  env:
+    - name: PORT
+      value: "8080"
+    - name: ENVIRONMENT
+      value: "staging"
+    - name: LOG_LEVEL
+      value: "info"
+    - name: AWS_REGION
+      value: "us-east-1"
+    - name: GOOGLE_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: google-oauth
+          key: client-id
+    - name: GOOGLE_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: google-oauth
+          key: client-secret
+    - name: APP_URL
+      value: "https://stage.mosaiclife.me"
+    - name: API_URL
+      value: "https://stage-api.mosaiclife.me"
+    - name: SESSION_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          name: session-secret
+          key: secret-key
+    - name: SESSION_COOKIE_DOMAIN
+      value: ".mosaiclife.me"
+    - name: STORAGE_BACKEND
+      value: "s3"
+    - name: S3_MEDIA_BUCKET
+      value: "mosaic-staging-media-033691785857"
+    - name: S3_BACKUP_BUCKET
+      value: "mosaic-staging-backups-033691785857"
+    - name: DB_URL
+      valueFrom:
+        secretKeyRef:
+          name: database-credentials
+          key: DB_URL
+
+externalSecrets:
+  database:
+    secretKey: "mosaic/staging/rds/credentials"
+  session:
+    secretKey: "mosaic/staging/session/secret-key"

@@ -5,3 +5,6 @@ web:
   enabled: true
 coreApi:
   enabled: true
+externalSecrets:
+  session:
+    secretKey: ""  # Required override per environment

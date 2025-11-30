@@ -14,7 +14,8 @@ web:
     enabled: false
   ingress:
     annotations:
-      alb.ingress.kubernetes.io/tags: "Environment=staging,Project=MosaicLife,Component=web"
+      # Note: Environment tag removed because ALB is shared with prod via group.name
+      alb.ingress.kubernetes.io/tags: "Project=MosaicLife,Component=web"
       external-dns.alpha.kubernetes.io/hostname: "stage.mosaiclife.me"
     hosts:
       - host: stage.mosaiclife.me
@@ -33,7 +34,8 @@ coreApi:
       eks.amazonaws.com/role-arn: arn:aws:iam::033691785857:role/mosaic-staging-core-api-role
   ingress:
     annotations:
-      alb.ingress.kubernetes.io/tags: "Environment=staging,Project=MosaicLife,Component=backend"
+      # Note: Environment tag removed because ALB is shared with prod via group.name
+      alb.ingress.kubernetes.io/tags: "Project=MosaicLife,Component=backend"
       external-dns.alpha.kubernetes.io/hostname: "stage-api.mosaiclife.me"
     hosts:
       - host: stage-api.mosaiclife.me

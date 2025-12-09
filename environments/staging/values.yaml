@@ -94,7 +94,7 @@ coreApi:
           name: database-credentials
           key: DB_URL
     - name: BEDROCK_GUARDRAIL_ID
-      value: o1m8awhi99vh
+      value: a1kbuwc508sp
     - name: BEDROCK_GUARDRAIL_VERSION
       value: 1
 externalSecrets:

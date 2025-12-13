@@ -118,3 +118,4 @@ externalSecrets:
     secretKey: "mosaic/staging/session/secret-key"
   debugSse:
     secretKey: "mosaic/staging/debug-sse/token"
+    property: "secretKey"

@@ -102,20 +102,8 @@ coreApi:
       value: "a1kbuwc508sp"
     - name: BEDROCK_GUARDRAIL_VERSION
       value: "1"
-  extraEnv:
-    # Debug SSE transport
-    - name: DEBUG_SSE_ENABLED
-      value: "true"
-    - name: DEBUG_SSE_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: debug-sse
-          key: token
 externalSecrets:
   database:
     secretKey: "mosaic/staging/rds/credentials"
   session:
     secretKey: "mosaic/staging/session/secret-key"
-  debugSse:
-    secretKey: "mosaic/staging/debug-sse/token"
-    property: "secretKey"

@@ -109,7 +109,7 @@ coreApi:
     - name: DEBUG_SSE_TOKEN
       valueFrom:
         secretKeyRef:
-          name: debugSse
+          name: debug-sse
           key: token
 externalSecrets:
   database:

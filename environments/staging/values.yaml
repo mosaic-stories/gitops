@@ -2,7 +2,7 @@
 # Updated automatically by GitHub Actions on merge to develop
 
 global:
-  imageTag: "staging-f31135e"
+  imageTag: "staging-a8547da"
   domain: "stage.mosaiclife.me"
   environment: staging
 web:
@@ -110,7 +110,7 @@ coreApi:
       valueFrom:
         secretKeyRef:
           name: debug-sse
-          key: token      
+          key: token
 externalSecrets:
   database:
     secretKey: "mosaic/staging/rds/credentials"

@@ -107,3 +107,7 @@ externalSecrets:
     secretKey: "mosaic/staging/rds/credentials"
   session:
     secretKey: "mosaic/staging/session/secret-key"
+# Prerender service configuration for SEO
+web:
+  prerender:
+    host: "prerender-staging.mosaic-staging.svc.cluster.local:3000"

@@ -101,8 +101,9 @@ coreApi:
           name: database-credentials
           key: DB_URL
     # Bedrock AI Guardrails (staging-specific guardrail)
+    # a1kbuwc508sp = mosaic-staging-ai-chat-guardrail (created by MosaicStagingResourcesStack)
     - name: BEDROCK_GUARDRAIL_ID
-      value: "o1m8awhi99vh"
+      value: "a1kbuwc508sp"
     - name: BEDROCK_GUARDRAIL_VERSION
       value: 1
 externalSecrets:

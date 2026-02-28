@@ -70,6 +70,34 @@ coreApi:
       value: o1m8awhi99vh
     - name: BEDROCK_GUARDRAIL_VERSION
       value: 1
+    # Neptune Graph Database Configuration
+    - name: NEPTUNE_HOST
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: host
+    - name: NEPTUNE_PORT
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: port
+    - name: NEPTUNE_REGION
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: region
+    - name: NEPTUNE_IAM_AUTH
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: iam_auth
+    - name: NEPTUNE_ENV_PREFIX
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: env_prefix
 externalSecrets:
   session:
     secretKey: "mosaic/prod/session/secret-key"
+  neptune:
+    secretKey: "mosaic/prod/neptune/connection"

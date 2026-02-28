@@ -106,8 +106,36 @@ coreApi:
       value: "a1kbuwc508sp"
     - name: BEDROCK_GUARDRAIL_VERSION
       value: 1
+    # Neptune Graph Database Configuration
+    - name: NEPTUNE_HOST
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: host
+    - name: NEPTUNE_PORT
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: port
+    - name: NEPTUNE_REGION
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: region
+    - name: NEPTUNE_IAM_AUTH
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: iam_auth
+    - name: NEPTUNE_ENV_PREFIX
+      valueFrom:
+        secretKeyRef:
+          name: neptune-connection
+          key: env_prefix
 externalSecrets:
   database:
     secretKey: "mosaic/staging/rds/credentials"
   session:
     secretKey: "mosaic/staging/session/secret-key"
+  neptune:
+    secretKey: "mosaic/staging/neptune/connection"

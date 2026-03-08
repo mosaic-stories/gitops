@@ -96,8 +96,17 @@ coreApi:
         secretKeyRef:
           name: neptune-connection
           key: env_prefix
+    # LiteLLM AI Proxy
+    - name: LITELLM_BASE_URL
+      value: "http://litellm.aiservices.svc.cluster.local:4000"
+    - name: AI_LLM_PROVIDER
+      value: "litellm"
+    - name: AI_EMBEDDING_PROVIDER
+      value: "litellm"
 externalSecrets:
   session:
     secretKey: "mosaic/prod/session/secret-key"
   neptune:
     secretKey: "mosaic/prod/neptune/connection"
+  litellm:
+    secretKey: "mosaic/prod/litellm/api-key"

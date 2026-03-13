@@ -1,0 +1,10 @@
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::033691785857:role/mosaic-shared-graph-explorer-role
+
+env:
+  AWS_REGION: "us-east-1"
+  PUBLIC_OR_PROXY_ENDPOINT: "http://localhost:18080"
+
+neptune:
+  secretKey: "mosaic/prod/neptune/connection"

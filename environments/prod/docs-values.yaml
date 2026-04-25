@@ -1,2 +1,7 @@
 image:
   tag: "prod-88179af"
+
+replicaCount: 0
+
+podDisruptionBudget:
+  enabled: false

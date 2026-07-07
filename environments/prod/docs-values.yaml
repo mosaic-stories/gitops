@@ -1,5 +1,5 @@
 image:
-  tag: "prod-bcd0269"
+  tag: "prod-28fea0c"
 replicaCount: 0
 podDisruptionBudget:
   enabled: false

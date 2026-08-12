@@ -2,7 +2,7 @@
 # Updated automatically by GitHub Actions on merge to develop
 
 global:
-  imageTag: "staging-4cc95c3"
+  imageTag: "staging-c30226c"
   domain: "stage.mosaiclife.me"
   environment: staging
 web:

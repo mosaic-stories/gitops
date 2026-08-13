@@ -1,5 +1,5 @@
 image:
-  tag: "prod-5794c0a"
+  tag: "prod-8176864"
 replicaCount: 0
 podDisruptionBudget:
   enabled: false

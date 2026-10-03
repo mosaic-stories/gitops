@@ -112,6 +112,9 @@ coreApi:
       value: "a1kbuwc508sp"
     - name: BEDROCK_GUARDRAIL_VERSION
       value: 1
+    # Graph augmentation disabled ahead of Neptune retirement (lean-runtime-ecs-migration)
+    - name: GRAPH_AUGMENTATION_ENABLED
+      value: "false"
     # Neptune Graph Database Configuration
     - name: NEPTUNE_HOST
       valueFrom:
